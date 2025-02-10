@@ -1,10 +1,10 @@
 {
-    "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PTERODACTYL PANEL - PTERODACTYL.IO",
+    "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY Jexactyl PANEL - jexactyl.com",
     "meta": {
         "version": "PTDL_v2",
         "update_url": null
     },
-    "exported_at": "2023-10-09T19:06:53+02:00",
+    "exported_at": "2025-02-10T15:31:57+01:00",
     "name": "Uptime Kuma",
     "author": "eggs@goover.dev",
     "description": "Uptime Kuma is an easy-to-use self-hosted monitoring tool.",
@@ -16,14 +16,14 @@
     "startup": "if [[ -d .git ]] && [[ {{AUTO_UPDATE}} == \"1\" ]]; then npm run setup; fi; \/usr\/local\/bin\/node \/home\/container\/server\/server.js --port={{SERVER_PORT}}",
     "config": {
         "files": "{}",
-        "startup": "{\r\n    \"done\": \"[SERVER] INFO: Listening on \"\r\n}",
+        "startup": "{\r\n    \"done\": \"Listening on \"\r\n}",
         "logs": "{}",
         "stop": "^^C"
     },
     "scripts": {
         "installation": {
-            "script": "#!\/bin\/ash\r\n# Uptime Kuma App Installation Script\r\n#\r\n# Server Files: \/mnt\/server\r\napk update\r\napk add --no-cache git curl jq file unzip make gcc g++ python3 python3-dev libtool\r\napk add --no-cache git-lfs --repository=https:\/\/dl-cdn.alpinelinux.org\/alpine\/latest-stable\/community\r\n\r\n## npm update to latest\r\necho -e \"Updating npm to latest....\\n\"\r\nif [ -d \"\/mnt\/server\/node_modules\" ]; then\r\n    rm -fR \/mnt\/server\/node_modules\r\n    npm cache verify\r\nfi\r\nnpm install -g npm@latest\r\n\r\n## Uptime Kuma install & update\r\nmkdir -p \/mnt\/server\r\ncd \/mnt\/server\r\ngit config --global --add safe.directory \/mnt\/server\r\n\r\nif [ -d .git ]; then\r\n    echo -e \"Updating Uptime Kuma....\\n \"\r\n    npm run setup\r\nelse\r\n    echo -e \"Download and installing Uptime Kuma...\\n\"   \r\n    git clone https:\/\/github.com\/louislam\/uptime-kuma.git .\r\n    npm run setup\r\nfi\r\n\r\n## only create dir, when .git is present to prevent errors\r\nif [ -d .git ]; then\r\n    mkdir -p \/mnt\/server\/data\r\nfi\r\n\r\nif [ ! -f \"\/mnt\/server\/data\/kuma.db\" ]; then\r\n    cp \/mnt\/server\/db\/kuma.db \/mnt\/server\/data\/kuma.db\r\nfi\r\n\r\n## install end\r\necho -e \"-----------------------------------------\"\r\necho -e \"Installation completed...\"\r\necho -e \"-----------------------------------------\"\r\nexit 0",
-            "container": "node:18-alpine",
+            "script": "#!\/bin\/ash\r\n# Uptime Kuma App Installation and Update Script\r\n#\r\n# Server Files: \/mnt\/server\r\n\r\n# Update APK repositories and install required packages\r\napk update\r\napk add --no-cache git curl jq file unzip make gcc g++ python3 python3-dev libtool\r\napk add --no-cache git-lfs --repository=https:\/\/dl-cdn.alpinelinux.org\/alpine\/latest-stable\/community\r\n\r\n# Update npm to the latest version\r\necho -e \"Updating npm to latest version...\\n\"\r\nif [ -d \"\/mnt\/server\/node_modules\" ]; then\r\n    rm -rf \/mnt\/server\/node_modules\r\n    npm cache verify\r\nfi\r\nnpm install -g npm@latest\r\n\r\n# Prepare server directory and configure git\r\nmkdir -p \/mnt\/server\r\ncd \/mnt\/server\r\ngit config --global --add safe.directory \/mnt\/server\r\n\r\n# Clone Uptime Kuma repository if not present, or fetch the latest tags if already cloned\r\nif [ -d .git ]; then\r\n    echo -e \"Fetching latest tags and switching to latest release...\\n\"\r\n    git fetch --tags                       # Fetch all tags from the repository\r\n    latest_tag=$(git describe --tags `git rev-list --tags --max-count=1`)  # Get latest tag\r\n    git checkout $latest_tag                # Checkout the latest tag\r\nelse\r\n    echo -e \"Cloning Uptime Kuma repository and switching to latest release...\\n\"\r\n    git clone https:\/\/github.com\/louislam\/uptime-kuma.git .\r\n    cd \/mnt\/server\r\n    latest_tag=$(git describe --tags `git rev-list --tags --max-count=1`)  # Get latest tag\r\n    git checkout $latest_tag                # Checkout the latest tag\r\nfi\r\n\r\n# Install or update npm dependencies and set up the application\r\necho -e \"Installing\/updating dependencies and setting up Uptime Kuma...\\n\"\r\nnpm install  # Install any new or updated npm packages\r\nnpm run setup\r\n\r\n# Ensure the data directory exists\r\nmkdir -p \/mnt\/server\/data\r\n\r\n# Copy the default database if it doesn't already exist\r\nif [ ! -f \"\/mnt\/server\/data\/kuma.db\" ]; then\r\n    cp \/mnt\/server\/db\/kuma.db \/mnt\/server\/data\/kuma.db\r\nfi\r\n\r\n# Completion message\r\necho -e \"-----------------------------------------\"\r\necho -e \"Installation and update completed to version $latest_tag ...\"\r\necho -e \"-----------------------------------------\"\r\nexit 0",
+            "container": "node:22-alpine",
             "entrypoint": "ash"
         }
     },
