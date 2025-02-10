@@ -1,34 +1,65 @@
-# Parkers eggs repo
+# Pterodactyl Eggs
 
-> [!WARNING]
-> 
-> End of Life / Continuation Message
-> ---
-> 
-> ***Notice:*** This repository will transition to read-only mode starting on **May 13, 2024**.
->
-> This change is necessary to facilitate the upcoming Pelican Panel Egg System integration.
+This repository contains a collection of Pterodactyl eggs for various game servers, bots, and software services.
 
-> [!IMPORTANT]
->
-> ### Action Required:
->
-> If you have any open issues or pull requests that are still relevant or needed, please consider migrating them to the new repositories.
+## Game Servers
 
-### Repository Restructuring:
+### 7 Days To Die
+- [7 Days To Die](game_eggs/7_days_to_die/egg-7-days-to-die.json)
+- [7 Days To Die (Pterodactyl)](game_eggs/7_days_to_die/egg-pterodactyl-7-days-to-die.json)
 
-To enhance organization and accessibility, the contents of this repository have been migrated into separate repositories based on categories:
+### Alt:V
+- [alt:V](game_eggs/altv/egg-alt--v.json)
 
-- **[Chatbots](https://github.com/pelican-eggs/chatbots)**
-- **[Database](https://github.com/pelican-eggs/database)**
-- **[Games](https://github.com/pelican-eggs/games)**
-- **[Generic](https://github.com/pelican-eggs/generic)**
-- **[Minecraft](https://github.com/pelican-eggs/minecraft)**
-- **[Monitoring](https://github.com/pelican-eggs/monitoring)**
-- **[Software](https://github.com/pelican-eggs/software)**
-- **[SteamCMD](https://github.com/pelican-eggs/steamcmd)**
-- **[Storage](https://github.com/pelican-eggs/storage)**
-- **[Tooling](https://github.com/pelican-eggs/tooling)**
-- **[Voice](https://github.com/pelican-eggs/voice)**
+### Assetto Corsa
+- [Assetto Corsa](game_eggs/assetto_corsa/egg-assetto-corsa.json)
+- [Assetto Corsa (Pterodactyl)](game_eggs/assetto_corsa/egg-pterodactyl-assetto-corsa.json)
+- [Assetto Corsa Freeroam + AI](game_eggs/assetto_corsa/egg-assetto-corsa--freeroam--a-i.json)
+- [Assetto Corsa Freeroam + AI (Pterodactyl)](game_eggs/assetto_corsa/egg-pterodactyl-assetto-corsa--freeroam--a-i.json)
 
-Thank you for your understanding and cooperation during this transition period.
+### Eco
+- [Eco](game_eggs/eco/egg-eco.json)
+- [Eco (Pterodactyl)](game_eggs/eco/egg-pterodactyl-eco.json)
+
+### Rimworld
+- [Rimworld Together](game_eggs/rimworld/together/egg-rimworld-together.json)
+- [Rimworld Together (Pterodactyl)](game_eggs/rimworld/together/egg-pterodactyl-rimworld-together.json)
+
+### Sunkenland
+- [Sunkenland](game_eggs/sunkenland/egg-sunkenland.json)
+
+### Valheim
+- [Valheim Vanilla](game_eggs/valheim/valheim_vanilla/egg-valheim.json)
+- [Valheim BepInEx](game_eggs/valheim/valheim_bepinex/egg-valheim-bep-i-nex.json)
+- [Valheim Plus](game_eggs/valheim/valheim_plus/egg-valheim-plus-mod.json)
+
+## Bots & Software
+
+### Development
+- [NodeJS](dev/nodejs/node-js.json)
+
+### Bots
+- [JTS3ServerMod](bots/jts3servermod/egg-j-t-s3-server-mod.json)
+- [SinusBot](bots/sinusbot/egg-sinusbot.json)
+
+### Software
+- [Code-Server](software/code-server/egg-code--server.json)
+- [Grafana](software/grafana/egg-grafana.json)
+- [Haste Server](software/haste-server/egg-haste-server.json)
+- [Uptime Kuma](software/uptime-kuma/egg-uptime-kuma.json)
+
+### Monitoring
+- [Loki](monitoring/loki/egg-loki.json)
+- [Prometheus](monitoring/prometheus/egg-prometheus.json)
+
+### Storage
+- [MinIO S3](storage/minio/egg-minio-s3.json)
+- [SFTP Storage Share](storage/sftp_storage_share/egg-sftp-storage-share.json)
+
+### Voice Servers
+- [TeamSpeak 3](voice_servers/teamspeak3-server/egg-teamspeak3-server.json)
+
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
